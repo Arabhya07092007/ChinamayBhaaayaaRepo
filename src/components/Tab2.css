@@ -1,0 +1,140 @@
+/* EmployeePage.css */
+h1 {
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+
+  
+  /* Modal styles */
+  .react-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .react-modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+
+    /* Add this to EmployeePage.css */
+.small-button {
+    padding: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .small-button:hover {
+    background-color: #45a049;
+  }
+  
+
+
+/* Add this to EmployeePage.css */
+.passkey-button {
+    margin-top: 10px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .passkey-button:hover {
+    background-color: #0b7dda;
+  }
+  
+
+  button.modal-button {
+    margin-top: 20px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  button.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+
+
+  /* Add this to EmployeePage.css */
+.employee-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+
+  
+   
+  

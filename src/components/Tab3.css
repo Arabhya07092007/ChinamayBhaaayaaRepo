@@ -1,0 +1,38 @@
+/* ComplaintTab.css */
+.complaint-tab-container {
+
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .complaint-list {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  thead th, tbody td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  thead th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    table {
+      margin-top: 0;
+    }
+  }
+  

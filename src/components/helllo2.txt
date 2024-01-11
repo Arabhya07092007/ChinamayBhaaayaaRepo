@@ -1,0 +1,159 @@
+// EmployeePage.jsx
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import './Tab2.css';
+
+const Tab2 = () => {
+  const [employees, setEmployees] = useState([
+    { id: 1, registeredUsers: 'John Doe', phoneNumber: '123-456-7890', mpin: '9876', carsScreened: 'Yes' },
+    { id: 2, registeredUsers: 'Jane Doe', phoneNumber: '987-654-3210', mpin: '5432', carsScreened: 'No' },
+  ]);
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [newEmployee, setNewEmployee] = useState({
+    registeredUsers: '',
+    phoneNumber: '',
+    mpin: '',
+    carsScreened: '',
+  });
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const addEmployee = () => {
+    setEmployees((prevEmployees) => [...prevEmployees, { id: prevEmployees.length + 1, ...newEmployee }]);
+    setNewEmployee({
+      registeredUsers: '',
+      phoneNumber: '',
+      mpin: '',
+      carsScreened: '',
+    });
+    closeModal();
+  };
+
+  const deleteEmployee = (id) => {
+    setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
+  };
+
+  const generatePasskey = () => {
+    const passkey = Math.random().toString(36).substring(2, 8).toUpperCase();
+    setNewEmployee((prevEmployee) => ({ ...prevEmployee, mpin: passkey }));
+  };
+
+  const EmployeeRow = ({ employee }) => {
+    const { id, registeredUsers, phoneNumber, mpin, carsScreened } = employee;
+
+    const handleDelete = () => {
+      deleteEmployee(id);
+    };
+
+    return (
+      <tr>
+        <td>{id}</td>
+        <td>{registeredUsers}</td>
+        <td>{phoneNumber}</td>
+        <td>{mpin}</td>
+        <td>{carsScreened}</td>
+        <td>
+          <button onClick={handleDelete} className="small-button">
+            Delete
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  return (
+    <div>
+      <h1>Employee Table</h1>
+      <button onClick={openModal} className="small-button">
+        Add Employee
+      </button>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Add Employee Modal"
+        ariaHideApp={false} // Disable the warning about accessibility
+      >
+        <h2>Add Employee</h2>
+        <form onSubmit={addEmployee}>
+          <label>
+            Registered Users:
+            <input
+              type="text"
+              name="registeredUsers"
+              value={newEmployee.registeredUsers}
+              onChange={(e) => setNewEmployee({ ...newEmployee, registeredUsers: e.target.value })}
+            />
+          </label>
+          <label>
+            Phone Number:
+            <input
+              type="text"
+              name="phoneNumber"
+              value={newEmployee.phoneNumber}
+              onChange={(e) => setNewEmployee({ ...newEmployee, phoneNumber: e.target.value })}
+            />
+          </label>
+          <label>
+            MPIN:
+            <input
+              type="text"
+              name="mpin"
+              value={newEmployee.mpin}
+              onChange={(e) => setNewEmployee({ ...newEmployee, mpin: e.target.value })}
+            />
+
+            <button type="button" onClick={generatePasskey} className="small-button">
+              Generate Passkey
+            </button>
+          </label>
+
+          <label>
+            Cars Screened:
+            <input
+              type="text"
+              name="carsScreened"
+              value={newEmployee.carsScreened}
+              onChange={(e) => setNewEmployee({ ...newEmployee, carsScreened: e.target.value })}
+            />
+
+            <button type="submit" className="small-button">
+              Add Employee
+            </button>
+          </label>
+
+          <button className="close-modal" onClick={closeModal}>
+            Close
+          </button>
+        </form>
+      </Modal>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Registered Users</th>
+            <th>Phone Number</th>
+            <th>MPIN</th>
+            <th>Cars Screened</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map((employee) => (
+            <EmployeeRow key={employee.id} employee={employee} />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Tab2;
